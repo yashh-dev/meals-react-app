@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { AppContext, useGlobalContext } from "../context";
+import { useGlobalContext } from "../context";
 
 const Meals = () => {
-  const { meals, loading, selectedMeal, selectMeal } = useGlobalContext();
+  const { meals, loading, selectMeal, addFavorite } = useGlobalContext();
   console.log("meals", meals);
   if (loading) {
     return (
@@ -38,14 +37,17 @@ const Meals = () => {
             </ul>
             <div className="card-body">
               <button
-                onClick={() => selectMeal(meal.idMeal)}
+                onClick={() => selectMeal(meal.idMeal, false)}
                 className="card-link btn btn-success"
               >
                 more
               </button>
-              <a href="#" className="card-link btn btn-danger">
+              <button
+                onClick={() => addFavorite(meal.idMeal)}
+                className="card-link btn btn-danger"
+              >
                 Favourite
-              </a>
+              </button>
             </div>
           </div>
         );

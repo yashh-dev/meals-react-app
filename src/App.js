@@ -6,14 +6,14 @@ import Search from './components/Search'
 import { useGlobalContext } from './context'
 
 export default function App() {
-  const {showModal} = useGlobalContext();
+  const { showModal, favorites } = useGlobalContext();
   return (
     <main>
-      <Search/>
-      {/*<Favorites/>*/}
-      <Meals className='container-fluid' />
+      <Search />
+      {favorites.length > 0 && <Favorites />}
+      <Meals className="container-fluid" />
       {showModal && <Modal />}
     </main>
-  )
+  );
 }
 

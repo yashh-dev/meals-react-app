@@ -2,17 +2,24 @@ import { useGlobalContext } from "../context";
 
 const Modal = () => {
   const { selectedMeal, closeModal } = useGlobalContext();
-  const { strMeal, idMeal, strMealThumb, strInstructions: text } = selectedMeal;
+  const {
+    strMeal,
+    strMealThumb,
+    strInstructions: text,
+    strSource,
+  } = selectedMeal;
   console.log(selectedMeal);
   return (
-    <aside className="modal-overlay d-flex justify-content-center align-items-center">
-      <div className="card col-8">
+    <aside className="modal-overlay d-flex justify-content-center align-items-center ">
+      <div
+        className="card col-8 p-4"
+        style={{ overflow: "scroll", height: "90vh" }}
+      >
         <img
           src={strMealThumb}
           className="card-img-top"
-          style={{ height: "50vh" }}
-          alt="..."
-        />
+          style={{ height: "15rem" }}
+        ></img>
         <div className="card-body">
           <h1 className="card-title">{strMeal}</h1>
           {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
@@ -22,7 +29,13 @@ const Modal = () => {
           <li className="list-group-item"></li>
         </ul>
         <div className="card-body">
-          <button className="btn btn-outline-danger" onClick={closeModal}>
+          <a href={strSource} className="card-link">
+            source
+          </a>
+          <button
+            className="btn btn-outline-danger card-link"
+            onClick={closeModal}
+          >
             Close
           </button>
         </div>
